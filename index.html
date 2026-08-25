@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pat Collection | Boutique de Ropa y Accesorios de Marca</title>
+<meta name="description" content="Pat Collection - Boutique de ropa y accesorios exclusivos. Elegancia y estilo único. Envíos a todo el país.">
+
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<!-- FontAwesome 6 -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Inter', sans-serif;
+  }
+  html{ scroll-behavior: smooth; }
+  body{ font-family: var(--font-sans); }
+  .font-serif{ font-family: var(--font-serif); }
+
+  /* Discreet pulse animation for WhatsApp floating button */
+  @keyframes pulse-ring{
+    0%{ box-shadow: 0 0 0 0 rgba(0,0,0,0.25); }
+    70%{ box-shadow: 0 0 0 14px rgba(0,0,0,0); }
+    100%{ box-shadow: 0 0 0 0 rgba(0,0,0,0); }
+  }
+  .whatsapp-pulse{ animation: pulse-ring 2.5s cubic-bezier(0.66,0,0,1) infinite; }
+
+  /* Fade-in utility for filtered products */
+  .product-card{ transition: opacity 0.35s ease, transform 0.35s ease; }
+  .product-hidden{ display: none !important; }
+
+  .filter-btn.active{ background-color:#000; color:#fff; }
+
+  ::-webkit-scrollbar{ width:8px; }
+  ::-webkit-scrollbar-thumb{ background:#000; }
+  ::-webkit-scrollbar-track{ background:#f2f2f2; }
+</style>
+</head>
+<body class="bg-white text-black antialiased">
+
+<!-- ============ BANNER SUPERIOR PROMOCIONAL ============ -->
+<div class="bg-black text-white text-center text-[11px] sm:text-xs tracking-widest uppercase py-2 px-4">
+  Envíos a todo el país &nbsp;|&nbsp; Colección Exclusiva 2026
+</div>
+
+<!-- ============ NAVBAR ============ -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200">
+  <nav class="max-w-7xl mx-auto px-5 sm:px-8 flex items-center justify-between h-18 py-4">
+    <a href="#inicio" class="font-serif text-2xl sm:text-3xl font-bold tracking-wide">PAT <span class="font-light">COLLECTION</span></a>
+
+    <!-- Desktop links -->
+    <ul class="hidden md:flex items-center gap-10 text-sm uppercase tracking-wider font-medium">
+      <li><a href="#inicio" class="hover:text-gray-500 transition-colors">Inicio</a></li>
+      <li><a href="#catalogo" class="hover:text-gray-500 transition-colors">Catálogo del Mes</a></li>
+      <li><a href="#categorias" class="hover:text-gray-500 transition-colors">Categorías</a></li>
+      <li><a href="#contacto" class="hover:text-gray-500 transition-colors">Contacto</a></li>
+    </ul>
+
+    <div class="flex items-center gap-4">
+      <a href="https://wa.me/50489093505" target="_blank" rel="noopener" class="hidden sm:flex items-center gap-2 border border-black px-4 py-2 text-xs uppercase tracking-wider font-medium hover:bg-black hover:text-white transition-colors">
+        <i class="fa-brands fa-whatsapp"></i> Escríbenos
+      </a>
+      <!-- Hamburger -->
+      <button id="menuBtn" aria-label="Abrir menú" class="md:hidden text-xl w-10 h-10 flex items-center justify-center">
+        <i class="fa-solid fa-bars"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="md:hidden hidden border-t border-gray-200 bg-white">
+    <ul class="flex flex-col text-sm uppercase tracking-wider font-medium px-6 py-4 gap-4">
+      <li><a href="#inicio" class="mobile-link block py-1">Inicio</a></li>
+      <li><a href="#catalogo" class="mobile-link block py-1">Catálogo del Mes</a></li>
+      <li><a href="#categorias" class="mobile-link block py-1">Categorías</a></li>
+      <li><a href="#contacto" class="mobile-link block py-1">Contacto</a></li>
+      <li>
+        <a href="https://wa.me/50489093505" target="_blank" rel="noopener" class="flex items-center justify-center gap-2 border border-black px-4 py-3 mt-2 text-xs uppercase tracking-wider hover:bg-black hover:text-white transition-colors">
+          <i class="fa-brands fa-whatsapp"></i> Escríbenos
+        </a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<!-- ============ HERO SECTION ============ -->
+<section id="inicio" class="relative h-[88vh] min-h-[560px] w-full flex items-center justify-center overflow-hidden">
+  <img src="images/hero-banner.jpg"
+       alt="Boutique Pat Collection - Moda elegante"
+       class="absolute inset-0 w-full h-full object-cover" loading="eager">
+  <div class="absolute inset-0 bg-black/55"></div>
+
+  <div class="relative z-10 text-center text-white px-6 max-w-3xl">
+    <p class="uppercase tracking-[0.3em] text-xs sm:text-sm mb-5 text-gray-200">Boutique de ropa &amp; accesorios</p>
+    <h1 class="font-serif text-4xl sm:text-6xl md:text-7xl font-bold leading-tight mb-6">Elegancia &amp; Estilo Único</h1>
+    <p class="text-gray-200 text-base sm:text-lg mb-10 max-w-xl mx-auto font-light">
+      Prendas y accesorios seleccionados con estilo minimalista para quienes valoran la calidad y la distinción.
+    </p>
+    <a href="#catalogo" class="inline-block bg-white text-black px-9 py-4 text-xs sm:text-sm uppercase tracking-widest font-semibold hover:bg-black hover:text-white border border-white transition-colors">
+      Ver Catálogo del Mes
+    </a>
+  </div>
+</section>
+
+<!-- ============ CATÁLOGO / CATEGORÍAS ============ -->
+<section id="catalogo" class="max-w-7xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
+  <div class="text-center mb-14">
+    <p class="uppercase tracking-[0.3em] text-xs text-gray-500 mb-3">Selección exclusiva</p>
+    <h2 class="font-serif text-3xl sm:text-4xl font-bold">Catálogo del Mes</h2>
+  </div>
+
+  <!-- Filtros -->
+  <div id="categorias" class="flex flex-wrap items-center justify-center gap-3 mb-14">
+    <button data-filter="todos" class="filter-btn active border border-black px-6 py-2.5 text-xs uppercase tracking-wider font-medium transition-colors">Todos</button>
+    <button data-filter="camisas" class="filter-btn border border-black px-6 py-2.5 text-xs uppercase tracking-wider font-medium transition-colors hover:bg-black hover:text-white">Camisas</button>
+    <button data-filter="zapatos" class="filter-btn border border-black px-6 py-2.5 text-xs uppercase tracking-wider font-medium transition-colors hover:bg-black hover:text-white">Zapatos</button>
+    <button data-filter="accesorios" class="filter-btn border border-black px-6 py-2.5 text-xs uppercase tracking-wider font-medium transition-colors hover:bg-black hover:text-white">Accesorios</button>
+  </div>
+
+  <!-- Grid de productos -->
+  <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+
+    <!-- Producto 1 -->
+    <article class="product-card group" data-category="camisas">
+      <div class="relative overflow-hidden bg-gray-100 aspect-[4/5]">
+        <span class="absolute top-4 left-4 z-10 bg-black text-white text-[10px] uppercase tracking-widest px-3 py-1">Camisas</span>
+        <img src="images/zapatos1.jpg" alt="Camisa Oxford Premium" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      </div>
+      <div class="pt-5 text-center">
+        <h3 class="font-serif text-lg font-semibold">Camisa Oxford Premium</h3>
+        <p class="text-gray-500 text-sm mt-1 mb-4">L. 950.00</p>
+        <button onclick="pedirWhatsApp('Camisa Oxford Premium')" class="w-full bg-black text-white py-3 text-xs uppercase tracking-widest font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-sm"></i> Pedir por WhatsApp
+        </button>
+      </div>
+    </article>
+
+    <!-- Producto 2 -->
+    <article class="product-card group" data-category="zapatos">
+      <div class="relative overflow-hidden bg-gray-100 aspect-[4/5]">
+        <span class="absolute top-4 left-4 z-10 bg-black text-white text-[10px] uppercase tracking-widest px-3 py-1">Zapatos</span>
+        <img src="images/zapatos-derby-cuero.jpg" alt="Zapatos Derby Cuero" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      </div>
+      <div class="pt-5 text-center">
+        <h3 class="font-serif text-lg font-semibold">Zapatos Derby Cuero</h3>
+        <p class="text-gray-500 text-sm mt-1 mb-4">L. 1,850.00</p>
+        <button onclick="pedirWhatsApp('Zapatos Derby Cuero')" class="w-full bg-black text-white py-3 text-xs uppercase tracking-widest font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-sm"></i> Pedir por WhatsApp
+        </button>
+      </div>
+    </article>
+
+    <!-- Producto 3 -->
+    <article class="product-card group" data-category="accesorios">
+      <div class="relative overflow-hidden bg-gray-100 aspect-[4/5]">
+        <span class="absolute top-4 left-4 z-10 bg-black text-white text-[10px] uppercase tracking-widest px-3 py-1">Accesorios</span>
+        <img src="images/reloj-minimalista.jpg" alt="Reloj Minimalista" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      </div>
+      <div class="pt-5 text-center">
+        <h3 class="font-serif text-lg font-semibold">Reloj Minimalista</h3>
+        <p class="text-gray-500 text-sm mt-1 mb-4">L. 2,300.00</p>
+        <button onclick="pedirWhatsApp('Reloj Minimalista')" class="w-full bg-black text-white py-3 text-xs uppercase tracking-widest font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-sm"></i> Pedir por WhatsApp
+        </button>
+      </div>
+    </article>
+
+    <!-- Producto 4 -->
+    <article class="product-card group" data-category="camisas">
+      <div class="relative overflow-hidden bg-gray-100 aspect-[4/5]">
+        <span class="absolute top-4 left-4 z-10 bg-black text-white text-[10px] uppercase tracking-widest px-3 py-1">Camisas</span>
+        <img src="images/camisa-lino-casual.jpg" alt="Camisa Lino Casual" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      </div>
+      <div class="pt-5 text-center">
+        <h3 class="font-serif text-lg font-semibold">Camisa Lino Casual</h3>
+        <p class="text-gray-500 text-sm mt-1 mb-4">L. 850.00</p>
+        <button onclick="pedirWhatsApp('Camisa Lino Casual')" class="w-full bg-black text-white py-3 text-xs uppercase tracking-widest font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-sm"></i> Pedir por WhatsApp
+        </button>
+      </div>
+    </article>
+
+    <!-- Producto 5 -->
+    <article class="product-card group" data-category="zapatos">
+      <div class="relative overflow-hidden bg-gray-100 aspect-[4/5]">
+        <span class="absolute top-4 left-4 z-10 bg-black text-white text-[10px] uppercase tracking-widest px-3 py-1">Zapatos</span>
+        <img src="images/botines-cuero-negro.jpg" alt="Botines Cuero Negro" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      </div>
+      <div class="pt-5 text-center">
+        <h3 class="font-serif text-lg font-semibold">Botines Cuero Negro</h3>
+        <p class="text-gray-500 text-sm mt-1 mb-4">L. 2,100.00</p>
+        <button onclick="pedirWhatsApp('Botines Cuero Negro')" class="w-full bg-black text-white py-3 text-xs uppercase tracking-widest font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-sm"></i> Pedir por WhatsApp
+        </button>
+      </div>
+    </article>
+
+    <!-- Producto 6 -->
+    <article class="product-card group" data-category="accesorios">
+      <div class="relative overflow-hidden bg-gray-100 aspect-[4/5]">
+        <span class="absolute top-4 left-4 z-10 bg-black text-white text-[10px] uppercase tracking-widest px-3 py-1">Accesorios</span>
+        <img src="images/cinturon-cuero-genuino.jpg" alt="Cinturón Cuero Genuino" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      </div>
+      <div class="pt-5 text-center">
+        <h3 class="font-serif text-lg font-semibold">Cinturón Cuero Genuino</h3>
+        <p class="text-gray-500 text-sm mt-1 mb-4">L. 650.00</p>
+        <button onclick="pedirWhatsApp('Cinturón Cuero Genuino')" class="w-full bg-black text-white py-3 text-xs uppercase tracking-widest font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-sm"></i> Pedir por WhatsApp
+        </button>
+      </div>
+    </article>
+
+    <!-- Producto 7 -->
+    <article class="product-card group" data-category="accesorios">
+      <div class="relative overflow-hidden bg-gray-100 aspect-[4/5]">
+        <span class="absolute top-4 left-4 z-10 bg-black text-white text-[10px] uppercase tracking-widest px-3 py-1">Accesorios</span>
+        <img src="images/lentes-sol-clasicos.jpg" alt="Lentes de Sol Clásicos" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      </div>
+      <div class="pt-5 text-center">
+        <h3 class="font-serif text-lg font-semibold">Lentes de Sol Clásicos</h3>
+        <p class="text-gray-500 text-sm mt-1 mb-4">L. 780.00</p>
+        <button onclick="pedirWhatsApp('Lentes de Sol Clásicos')" class="w-full bg-black text-white py-3 text-xs uppercase tracking-widest font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-sm"></i> Pedir por WhatsApp
+        </button>
+      </div>
+    </article>
+
+    <!-- Producto 8 -->
+    <article class="product-card group" data-category="camisas">
+      <div class="relative overflow-hidden bg-gray-100 aspect-[4/5]">
+        <span class="absolute top-4 left-4 z-10 bg-black text-white text-[10px] uppercase tracking-widest px-3 py-1">Camisas</span>
+        <img src="images/camisa-negra-slim-fit.jpg" alt="Camisa Negra Slim Fit" loading="lazy" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+      </div>
+      <div class="pt-5 text-center">
+        <h3 class="font-serif text-lg font-semibold">Camisa Negra Slim Fit</h3>
+        <p class="text-gray-500 text-sm mt-1 mb-4">L. 990.00</p>
+        <button onclick="pedirWhatsApp('Camisa Negra Slim Fit')" class="w-full bg-black text-white py-3 text-xs uppercase tracking-widest font-medium hover:bg-gray-800 transition-colors flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-sm"></i> Pedir por WhatsApp
+        </button>
+      </div>
+    </article>
+
+  </div>
+
+  <p id="emptyState" class="hidden text-center text-gray-500 text-sm mt-16">No hay productos disponibles en esta categoría por el momento.</p>
+</section>
+
+<!-- ============ SOBRE LA MARCA / GARANTÍA ============ -->
+<section class="bg-black text-white py-20 sm:py-24">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-14">
+      <p class="uppercase tracking-[0.3em] text-xs text-gray-400 mb-3">Por qué elegirnos</p>
+      <h2 class="font-serif text-3xl sm:text-4xl font-bold">La Experiencia Pat Collection</h2>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
+      <div class="border border-white/20 px-8 py-12 hover:border-white/60 transition-colors">
+        <i class="fa-solid fa-gem text-3xl mb-5"></i>
+        <h3 class="font-serif text-xl font-semibold mb-3">Calidad Garantizada</h3>
+        <p class="text-gray-300 text-sm font-light leading-relaxed">Cada prenda y accesorio es seleccionado bajo estrictos estándares de calidad y materiales premium.</p>
+      </div>
+      <div class="border border-white/20 px-8 py-12 hover:border-white/60 transition-colors">
+        <i class="fa-solid fa-headset text-3xl mb-5"></i>
+        <h3 class="font-serif text-xl font-semibold mb-3">Atención Personalizada</h3>
+        <p class="text-gray-300 text-sm font-light leading-relaxed">Te asesoramos vía WhatsApp para encontrar la prenda perfecta que se ajuste a tu estilo.</p>
+      </div>
+      <div class="border border-white/20 px-8 py-12 hover:border-white/60 transition-colors">
+        <i class="fa-solid fa-truck-fast text-3xl mb-5"></i>
+        <h3 class="font-serif text-xl font-semibold mb-3">Envíos Rápidos</h3>
+        <p class="text-gray-300 text-sm font-light leading-relaxed">Entregamos a todo el país con la rapidez y seguridad que tu compra merece.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACTO / CTA FINAL ============ -->
+<section id="contacto" class="max-w-4xl mx-auto px-5 sm:px-8 py-20 sm:py-28 text-center">
+  <p class="uppercase tracking-[0.3em] text-xs text-gray-500 mb-3">Contáctanos</p>
+  <h2 class="font-serif text-3xl sm:text-4xl font-bold mb-6">¿Lista/o para renovar tu estilo?</h2>
+  <p class="text-gray-600 font-light mb-10 max-w-xl mx-auto">Escríbenos directamente y con gusto te ayudaremos a elegir la prenda o el accesorio perfecto para ti.</p>
+  <a href="https://wa.me/50489093505?text=%C2%A1Hola%20Pat%20Collection!%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20productos." target="_blank" rel="noopener"
+     class="inline-flex items-center gap-3 bg-black text-white px-9 py-4 text-xs sm:text-sm uppercase tracking-widest font-semibold hover:bg-gray-800 transition-colors">
+    <i class="fa-brands fa-whatsapp text-lg"></i> Chatear por WhatsApp
+  </a>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="border-t border-gray-200 bg-white">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-14 grid grid-cols-1 sm:grid-cols-3 gap-10 text-center sm:text-left">
+    <div>
+      <h4 class="font-serif text-xl font-bold mb-3">PAT COLLECTION</h4>
+      <p class="text-gray-500 text-sm font-light leading-relaxed">Boutique de ropa y accesorios de marca. Elegancia y estilo único en cada pieza.</p>
+    </div>
+
+    <div>
+      <h5 class="uppercase text-xs tracking-widest font-semibold mb-4">Horario de Atención</h5>
+      <p class="text-gray-500 text-sm font-light">Lunes a Sábado: 9:00 am – 6:00 pm</p>
+      <p class="text-gray-500 text-sm font-light">Domingo: Cerrado</p>
+    </div>
+
+    <div class="flex flex-col items-center sm:items-start">
+      <h5 class="uppercase text-xs tracking-widest font-semibold mb-4">Síguenos</h5>
+      <div class="flex gap-4">
+        <a href="#" target="_blank" rel="noopener" aria-label="Instagram" class="w-10 h-10 flex items-center justify-center border border-black hover:bg-black hover:text-white transition-colors">
+          <i class="fa-brands fa-instagram"></i>
+        </a>
+        <a href="#" target="_blank" rel="noopener" aria-label="Facebook" class="w-10 h-10 flex items-center justify-center border border-black hover:bg-black hover:text-white transition-colors">
+          <i class="fa-brands fa-facebook-f"></i>
+        </a>
+        <a href="https://wa.me/50489093505" target="_blank" rel="noopener" aria-label="WhatsApp" class="w-10 h-10 flex items-center justify-center border border-black hover:bg-black hover:text-white transition-colors">
+          <i class="fa-brands fa-whatsapp"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-gray-200 py-5 text-center text-xs text-gray-400 tracking-wide">
+    &copy; <span id="year"></span> Pat Collection. Todos los derechos reservados.
+  </div>
+</footer>
+
+<!-- ============ BOTÓN FLOTANTE WHATSAPP ============ -->
+<a href="https://wa.me/50489093505?text=%C2%A1Hola%20Pat%20Collection!%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20productos."
+   target="_blank" rel="noopener" aria-label="Chatear por WhatsApp"
+   class="whatsapp-pulse fixed bottom-6 right-6 z-50 w-14 h-14 sm:w-16 sm:h-16 bg-black text-white rounded-full flex items-center justify-center text-2xl shadow-lg hover:bg-gray-800 transition-colors">
+  <i class="fa-brands fa-whatsapp"></i>
+</a>
+
+<script>
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // ===== Mobile menu toggle =====
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+
+  menuBtn.addEventListener('click', function () {
+    const isHidden = mobileMenu.classList.contains('hidden');
+    mobileMenu.classList.toggle('hidden');
+    menuBtn.innerHTML = isHidden
+      ? '<i class="fa-solid fa-xmark"></i>'
+      : '<i class="fa-solid fa-bars"></i>';
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(function (link) {
+    link.addEventListener('click', function () {
+      mobileMenu.classList.add('hidden');
+      menuBtn.innerHTML = '<i class="fa-solid fa-bars"></i>';
+    });
+  });
+
+  // ===== Filtro de categorías =====
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const productCards = document.querySelectorAll('.product-card');
+  const emptyState = document.getElementById('emptyState');
+
+  filterButtons.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      filterButtons.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      const filter = btn.getAttribute('data-filter');
+      let visibleCount = 0;
+
+      productCards.forEach(function (card) {
+        const category = card.getAttribute('data-category');
+        if (filter === 'todos' || category === filter) {
+          card.classList.remove('product-hidden');
+          visibleCount++;
+        } else {
+          card.classList.add('product-hidden');
+        }
+      });
+
+      emptyState.classList.toggle('hidden', visibleCount !== 0);
+    });
+  });
+
+  // ===== Pedido automático por WhatsApp =====
+  function pedirWhatsApp(nombreProducto) {
+    const numero = '50489093505';
+    const mensaje = '¡Hola Pat Collection! Me interesa consultar la disponibilidad del producto: ' + nombreProducto + '.';
+    const url = 'https://wa.me/' + numero + '?text=' + encodeURIComponent(mensaje);
+    window.open(url, '_blank');
+  }
+</script>
+
+</body>
+</html>
